@@ -20,6 +20,11 @@ public class EmployeeResource {
         return ResponseEntity.ok(employee);
     }
 
+    @PutMapping(path = "/update", produces = {"application/json"})
+    public ResponseEntity<Employee> update(@RequestParam("id") Long id, @RequestBody Employee employee) {
+        return ResponseEntity.ok(EmployeeStub.update(id, employee));
+    }
+
     @DeleteMapping(path = "/delete/{id}", produces = {"application/json"})
     public ResponseEntity<Employee> delete(@PathVariable Long id) {
         return ResponseEntity.ok(EmployeeStub.delete(id));

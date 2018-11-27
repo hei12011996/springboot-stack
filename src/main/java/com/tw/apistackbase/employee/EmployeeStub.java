@@ -25,7 +25,12 @@ public class EmployeeStub {
     }
 
     public static Employee update(Long id, Employee employee){
-        return employees.put(id, employee);
+        if (!employees.containsKey(id)) {
+            return null;
+        }
+        employee.setId(id);
+        employees.put(id, employee);
+        return employee;
     }
 
     public static Employee delete(Long id){
