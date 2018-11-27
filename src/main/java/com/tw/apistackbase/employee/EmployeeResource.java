@@ -14,4 +14,10 @@ public class EmployeeResource {
         return ResponseEntity.ok(EmployeeStub.listAll());
     }
 
+    @PostMapping(path = "/create", produces = {"application/json"})
+    public ResponseEntity<Employee> create(@RequestBody Employee employee) {
+        EmployeeStub.create(employee);
+        return ResponseEntity.ok(employee);
+    }
+
 }
