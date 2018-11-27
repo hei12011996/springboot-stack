@@ -18,13 +18,16 @@ public class EmployeeResource {
     @GetMapping(path = "/find", produces = {"application/json"})
     public ResponseEntity<List<Employee>> findById(@RequestParam(value = "id", required = false) Long id,
                                                    @RequestParam(value = "name", required = false) String name,
-                                                   @RequestParam(value = "age", required = false) Integer age) {
+                                                   @RequestParam(value = "age", required = false) Integer age,
+                                                   @RequestParam(value = "gender", required = false) String gender) {
         if (id != null) {
             return ResponseEntity.ok(Arrays.asList(EmployeeStub.findById(id)));
         } else if (name != null) {
             return ResponseEntity.ok(EmployeeStub.findByName(name));
         } else if (age != null) {
             return ResponseEntity.ok(EmployeeStub.findByAge(age));
+        } else if (gender != null) {
+            return ResponseEntity.ok(EmployeeStub.findByGender(gender));
         }
         return ResponseEntity.badRequest().build();
     }

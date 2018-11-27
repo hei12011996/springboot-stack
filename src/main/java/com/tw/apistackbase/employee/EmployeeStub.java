@@ -33,6 +33,10 @@ public class EmployeeStub {
         return employees.values().stream().filter(employee -> employee.getAge().equals(age)).collect(Collectors.toList());
     }
 
+    public static List<Employee> findByGender(String gender){
+        return employees.values().stream().filter(employee -> employee.getGender().equals(gender)).collect(Collectors.toList());
+    }
+
     public static Employee update(Long id, Employee employee){
         if (!employees.containsKey(id)) {
             return null;
