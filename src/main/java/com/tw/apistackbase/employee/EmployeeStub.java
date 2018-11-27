@@ -29,6 +29,10 @@ public class EmployeeStub {
         return employees.values().stream().filter(employee -> employee.getName().equals(name)).collect(Collectors.toList());
     }
 
+    public static List<Employee> findByAge(Integer age){
+        return employees.values().stream().filter(employee -> employee.getAge().equals(age)).collect(Collectors.toList());
+    }
+
     public static Employee update(Long id, Employee employee){
         if (!employees.containsKey(id)) {
             return null;
