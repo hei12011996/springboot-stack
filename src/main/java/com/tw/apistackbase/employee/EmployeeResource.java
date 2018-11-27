@@ -9,4 +9,9 @@ import java.util.List;
 @RequestMapping("/employee")
 public class EmployeeResource {
 
+    @GetMapping(path = "/getAll", produces = {"application/json"})
+    public ResponseEntity<List<Employee>> getAll() {
+        return ResponseEntity.ok(EmployeeStub.listAll());
+    }
+
 }
