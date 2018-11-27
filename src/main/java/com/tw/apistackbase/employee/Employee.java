@@ -13,5 +13,36 @@ public class Employee {
         this.gender = gender;
     }
 
+    public Long getId(){
+        return this.id;
+    }
+
+    public String getName(){
+        return this.name;
+    }
+
+    public Integer getAge(){
+        return this.age;
+    }
+
+    public String getGender(){
+        return this.gender;
+    }
+
+    public void setId(Long id){
+        this.id = id;
+    }
+
+    public void setName(String name){
+        this.name = name;
+    }
+
+    public void setAge(Integer age){
+        this.age = age;
+    }
+
+    public void setGender(String gender){
+        this.gender = gender;
+    }
 
 }
