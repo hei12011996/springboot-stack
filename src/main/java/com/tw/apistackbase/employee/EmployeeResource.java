@@ -20,4 +20,9 @@ public class EmployeeResource {
         return ResponseEntity.ok(employee);
     }
 
+    @DeleteMapping(path = "/delete/{id}", produces = {"application/json"})
+    public ResponseEntity<Employee> delete(@PathVariable Long id) {
+        return ResponseEntity.ok(EmployeeStub.delete(id));
+    }
+
 }
