@@ -14,6 +14,11 @@ public class EmployeeResource {
         return ResponseEntity.ok(EmployeeStub.listAll());
     }
 
+    @GetMapping(path = "/find", produces = {"application/json"})
+    public ResponseEntity<Employee> findById(@RequestParam("id") Long id) {
+        return ResponseEntity.ok(EmployeeStub.findById(id));
+    }
+
     @PostMapping(path = "/create", produces = {"application/json"})
     public ResponseEntity<Employee> create(@RequestBody Employee employee) {
         EmployeeStub.create(employee);
