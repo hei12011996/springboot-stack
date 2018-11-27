@@ -3,6 +3,7 @@ package com.tw.apistackbase.employee;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Arrays;
 import java.util.List;
 
 @RestController
@@ -15,8 +16,13 @@ public class EmployeeResource {
     }
 
     @GetMapping(path = "/find", produces = {"application/json"})
-    public ResponseEntity<Employee> findById(@RequestParam("id") Long id) {
-        return ResponseEntity.ok(EmployeeStub.findById(id));
+    public ResponseEntity<List<Employee>> findById(@RequestParam(value = "id", required = false) Long id, @RequestParam("name") String name) {
+        if (id != null) {
+            return ResponseEntity.ok(Arrays.asList(EmployeeStub.findById(id)));
+        } else if (name != null) {
+            return ResponseEntity.ok(EmployeeStub.findByName(name));
+        }
+        return ResponseEntity.badRequest().build();
     }
 
     @PostMapping(path = "/create", produces = {"application/json"})

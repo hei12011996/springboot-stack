@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 public class EmployeeStub {
     private static Map<Long, Employee> employees = new HashMap<Long, Employee>();
@@ -22,6 +23,10 @@ public class EmployeeStub {
 
     public static Employee findById(Long id){
         return employees.get(id);
+    }
+
+    public static List<Employee> findByName(String name){
+        return employees.values().stream().filter(employee -> employee.getName().equals(name)).collect(Collectors.toList());
     }
 
     public static Employee update(Long id, Employee employee){
